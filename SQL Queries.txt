@@ -1,0 +1,82 @@
+1.Change the current Database to quiz and show the tables present in it.
+
+Query:-
+
+>use quiz;
+>show tables;
+--------------------------------------------------------------------------------
+
+2.Display the  table users
+
+Query:-
+
+>select * from users;
+
+--------------------------------------------------------------------------------
+3. Retrieve the details of users with a score higher than 20.
+
+Query:-
+
+>SELECT user_id, name, score
+FROM users
+WHERE score > 20;
+
+---------------------------------------------------------------------------------
+4.Display the table question.
+
+
+Query:-
+
+>select * from question;
+
+----------------------------------------------------------------------------------
+5.How many questions are available to attempt in count?
+
+Query:-
+
+>SELECT COUNT(*) AS total_questions FROM question;
+
+-----------------------------------------------------------------------------------
+6. Who got the least score in all?
+
+
+Query:-
+
+>select name, score from users where score in (select min(score) from users);
+
+------------------------------------------------------------------------------------
+
+7.Display the question and answers according to descending order of the question length? 
+
+Query:-
+
+>SELECT question, answer
+FROM question
+ORDER BY LENGTH(question) DESC;
+
+-----------------------------------------------------------------------------------------
+8. Who got the highest score of all?
+
+Query:-
+
+>select name, score from users where score in (select max(score) from users);
+
+-----------------------------------------------------------------------------------------
+
+9.Who got a score greater than the average score of all the users?
+
+Query:-
+
+>SELECT user_id, name, score
+FROM users
+WHERE score > (
+    SELECT AVG(score) FROM users
+);
+
+------------------------------------------------------------------------------------------
+
+10.Display the username with their respective scores from highest to least?
+
+Query:-
+
+SELECT name, score FROM users ORDER BY score DESC;
